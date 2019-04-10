@@ -35,9 +35,10 @@ function CharacterStats(stats) {
   GameObject.call(this, stats); //this refers to the CharacterStats context
   this.healthPoints = stats.healthPoints;
 }
+CharacterStats.prototype = Object.create(GameObject.prototype);// lettin CharacterStats know about GameObject
 
 CharacterStats.prototype.takeDamage = function() {
-  console.log('<object name> took damage.')
+  console.log(`${this.name} took damage.`)
 }
 
 
@@ -53,18 +54,21 @@ CharacterStats.prototype.takeDamage = function() {
 */
 
 function Humanoid(chara) {
-  GameObject.call(this, chara);
   CharacterStats.call(this,chara);
   this.team= chara.team;
   this.weapons = chara.weapons;
   this.language = chara.language;
 }
 
+Humanoid.prototype = Object.create(CharacterStats.prototype); // letting the Humanoid know about CharacterStats
+
+
 Humanoid.prototype.greet = function() {
-  console.log(`${this.name} was removed from the game.`)
+  console.log(`${this.name} offers a greeting in ${this.language}.`)
 }
 
- 
+
+
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
