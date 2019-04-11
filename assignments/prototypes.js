@@ -22,7 +22,7 @@ function GameObject(obj) {
 }
 
 GameObject.prototype.destroy = function() {
-  console.log(`${this.name} was removed from the game.`)
+  return `${this.name} was removed from the game.`
 }
 
 /*
@@ -38,7 +38,7 @@ function CharacterStats(stats) {
 CharacterStats.prototype = Object.create(GameObject.prototype);// lettin CharacterStats know about GameObject
 
 CharacterStats.prototype.takeDamage = function() {
-  console.log(`${this.name} took damage.`)
+  return `${this.name} took damage.`
 }
 
 
@@ -64,7 +64,7 @@ Humanoid.prototype = Object.create(CharacterStats.prototype); // letting the Hum
 
 
 Humanoid.prototype.greet = function() {
-  console.log(`${this.name} offers a greeting in ${this.language}.`)
+  return `${this.name} offers a greeting in ${this.language}.`
 }
 
 
